@@ -44,28 +44,28 @@ public class MainActivity extends AppCompatActivity {
             }
             Log.i(TAG, "mPrinterReceiver printer status: " + status);
             switch (status) {
-                case OPEN:// 打印机机盖开启
+                case OPEN:// 打印机机盖开启。
                     Toast.makeText(context, "打印机机盖开启", Toast.LENGTH_SHORT).show();
                     break;
-                case ERROR:// 打印机错误
+                case ERROR:// 打印机错误。
                     Toast.makeText(context, "打印机错误: " + errorMsg, Toast.LENGTH_SHORT).show();
                     break;
-                case NO_PAPER:// 打印机缺纸
+                case NO_PAPER:// 打印机缺纸。
                     Toast.makeText(context, "打印机缺纸", Toast.LENGTH_SHORT).show();
                     break;
-                case CONNECTED:// 打印机连接成功
+                case CONNECTED:// 打印机连接成功。
                     Toast.makeText(context, "打印机连接成功", Toast.LENGTH_SHORT).show();
                     break;
-                case CONNECTING:// 正在连接打印机
+                case CONNECTING:// 正在连接打印机。
                     Toast.makeText(context, "正在连接打印机", Toast.LENGTH_SHORT).show();
                     break;
-                case DISCONNECTED:// 打印机断开连接
+                case DISCONNECTED:// 打印机断开连接。
                     Toast.makeText(context, "打印机断开连接", Toast.LENGTH_SHORT).show();
                     break;
-                case CONNECT_FAIL:// 打印机连接失败
+                case CONNECT_FAIL:// 打印机连接失败。
                     Toast.makeText(context, "打印机连接失败：" + errorMsg, Toast.LENGTH_SHORT).show();
                     break;
-                case READY:// 打印机准备就绪
+                case READY:// 打印机准备就绪。
                     Toast.makeText(context, "打印机准备就绪：" + errorMsg, Toast.LENGTH_SHORT).show();
                     break;
             }
