@@ -1,4 +1,4 @@
-package com.codingapi.android.library.printer.thread;
+package com.codingapi.android.library.printer.threads;
 
 import android.support.annotation.NonNull;
 import java.util.concurrent.ThreadFactory;

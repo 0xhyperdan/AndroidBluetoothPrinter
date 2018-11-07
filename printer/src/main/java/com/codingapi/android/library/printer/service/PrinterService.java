@@ -8,8 +8,8 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.widget.Toast;
 import com.codingapi.android.library.printer.PrinterDeviceManager;
-import com.codingapi.android.library.printer.thread.ThreadFactoryBuilder;
-import com.codingapi.android.library.printer.thread.ThreadPool;
+import com.codingapi.android.library.printer.threads.ThreadFactoryBuilder;
+import com.codingapi.android.library.printer.threads.ThreadPool;
 import java.io.Serializable;
 import java.util.ArrayList;
 

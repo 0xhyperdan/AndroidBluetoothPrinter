@@ -1,4 +1,4 @@
-package com.codingapi.android.library.printer.thread;
+package com.codingapi.android.library.printer.threads;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
