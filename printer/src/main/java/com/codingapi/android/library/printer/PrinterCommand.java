@@ -1,6 +1,7 @@
 package com.codingapi.android.library.printer;
 
 import android.text.TextUtils;
+
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
@@ -15,71 +16,71 @@ public class PrinterCommand {
     /**
      * 复位打印机
      */
-    public static final byte[] RESET = { 0x1b, 0x40 };
+    public static final byte[] RESET = {0x1b, 0x40};
     /**
      * 左对齐
      */
-    public static final byte[] TEXT_LEFT = { 0x1b, 0x61, 0x00 };
+    public static final byte[] TEXT_LEFT = {0x1b, 0x61, 0x00};
     /**
      * 中间对齐
      */
-    public static final byte[] TEXT_CENTER = { 0x1b, 0x61, 0x01 };
+    public static final byte[] TEXT_CENTER = {0x1b, 0x61, 0x01};
     /**
      * 右对齐
      */
-    public static final byte[] TEXT_RIGHT = { 0x1b, 0x61, 0x02 };
+    public static final byte[] TEXT_RIGHT = {0x1b, 0x61, 0x02};
     /**
      * 选择加粗模式
      */
-    public static final byte[] BOLD = { 0x1b, 0x45, 0x01 };
+    public static final byte[] BOLD = {0x1b, 0x45, 0x01};
     /**
      * 取消加粗模式
      */
-    public static final byte[] CANCEL_BOLD = { 0x1b, 0x45, 0x00 };
+    public static final byte[] CANCEL_BOLD = {0x1b, 0x45, 0x00};
     /**
      * 宽高加倍
      */
-    public static final byte[] DOUBLE_HEIGHT_WIDTH = { 0x1d, 0x21, 0x11 };
+    public static final byte[] DOUBLE_HEIGHT_WIDTH = {0x1d, 0x21, 0x11};
     /**
      * 宽加倍
      */
-    public static final byte[] DOUBLE_WIDTH = { 0x1d, 0x21, 0x10 };
+    public static final byte[] DOUBLE_WIDTH = {0x1d, 0x21, 0x10};
     /**
      * 高加倍
      */
-    public static final byte[] DOUBLE_HEIGHT = { 0x1d, 0x21, 0x01 };
+    public static final byte[] DOUBLE_HEIGHT = {0x1d, 0x21, 0x01};
     /**
      * 字体不放大
      */
-    public static final byte[] NORMAL = { 0x1d, 0x21, 0x00 };
+    public static final byte[] NORMAL = {0x1d, 0x21, 0x00};
     /**
      * 设置默认行间距
      */
-    public static final byte[] LINE_SPACING_DEFAULT = { 0x1b, 0x32 };
+    public static final byte[] LINE_SPACING_DEFAULT = {0x1b, 0x32};
     /**
      * 字体 最小 拉长
      */
-    public static final byte[] FONT_H_1 = { 0x1d, 0x21, 0x01 };
-    public static final byte[] FONT_H_2 = { 0x1d, 0x21, 0x02 };
-    public static final byte[] FONT_H_3 = { 0x1d, 0x21, 0x03 };
-    public static final byte[] FONT_H_4 = { 0x1d, 0x21, 0x04 };
-    public static final byte[] FONT_H_5 = { 0x1d, 0x21, 0x05 };
-    public static final byte[] FONT_H_6 = { 0x1d, 0x21, 0x06 };
-    public static final byte[] FONT_H_7 = { 0x1d, 0x21, 0x07 };
-    public static final byte[] FONT_W_1 = { 0x1d, 0x21, 0x11 };
-    public static final byte[] FONT_W_2 = { 0x1d, 0x21, 0x12 };
-    public static final byte[] FONT_W_3 = { 0x1d, 0x21, 0x13 };
-    public static final byte[] FONT_W_4 = { 0x1d, 0x21, 0x14 };
-    public static final byte[] FONT_W_5 = { 0x1d, 0x21, 0x15 };
-    public static final byte[] FONT_W_6 = { 0x1d, 0x21, 0x16 };
-    public static final byte[] FONT_W_7 = { 0x1d, 0x21, 0x17 };
-    public static final byte[] FONT_1 = { 0x1d, 0x21, 0x11 };
-    public static final byte[] FONT_2 = { 0x1d, 0x21, 0x22 };
-    public static final byte[] FONT_3 = { 0x1d, 0x21, 0x33 };
-    public static final byte[] FONT_4 = { 0x1d, 0x21, 0x44 };
-    public static final byte[] FONT_5 = { 0x1d, 0x21, 0x55 };
-    public static final byte[] FONT_6 = { 0x1d, 0x21, 0x66 };
-    public static final byte[] FONT_7 = { 0x1d, 0x21, 0x77 };
+    public static final byte[] FONT_H_1 = {0x1d, 0x21, 0x01};
+    public static final byte[] FONT_H_2 = {0x1d, 0x21, 0x02};
+    public static final byte[] FONT_H_3 = {0x1d, 0x21, 0x03};
+    public static final byte[] FONT_H_4 = {0x1d, 0x21, 0x04};
+    public static final byte[] FONT_H_5 = {0x1d, 0x21, 0x05};
+    public static final byte[] FONT_H_6 = {0x1d, 0x21, 0x06};
+    public static final byte[] FONT_H_7 = {0x1d, 0x21, 0x07};
+    public static final byte[] FONT_W_1 = {0x1d, 0x21, 0x11};
+    public static final byte[] FONT_W_2 = {0x1d, 0x21, 0x12};
+    public static final byte[] FONT_W_3 = {0x1d, 0x21, 0x13};
+    public static final byte[] FONT_W_4 = {0x1d, 0x21, 0x14};
+    public static final byte[] FONT_W_5 = {0x1d, 0x21, 0x15};
+    public static final byte[] FONT_W_6 = {0x1d, 0x21, 0x16};
+    public static final byte[] FONT_W_7 = {0x1d, 0x21, 0x17};
+    public static final byte[] FONT_1 = {0x1d, 0x21, 0x11};
+    public static final byte[] FONT_2 = {0x1d, 0x21, 0x22};
+    public static final byte[] FONT_3 = {0x1d, 0x21, 0x33};
+    public static final byte[] FONT_4 = {0x1d, 0x21, 0x44};
+    public static final byte[] FONT_5 = {0x1d, 0x21, 0x55};
+    public static final byte[] FONT_6 = {0x1d, 0x21, 0x66};
+    public static final byte[] FONT_7 = {0x1d, 0x21, 0x77};
 
     /**
      * 汉字格式
@@ -88,7 +89,7 @@ public class PrinterCommand {
     /**
      * ESC查询打印机实时状态指令
      */
-    static final byte[] ESC = { 0x10, 0x04, 0x02 };
+    static final byte[] ESC = {0x10, 0x04, 0x02};
     /**
      * ESC查询打印机实时状态 缺纸状态
      */
@@ -131,7 +132,7 @@ public class PrinterCommand {
     /**
      * 换行
      */
-    private static final byte[] BR = { 0x0A };
+    private static final byte[] BR = {0x0A};
 
     /**
      * 打印文字 换行
@@ -240,8 +241,8 @@ public class PrinterCommand {
      * 手机
      *
      * @param address 地址
-     * @param name 名字
-     * @param phone 手机
+     * @param name    名字
+     * @param phone   手机
      * @return 标题格式
      */
     public static ArrayList<byte[]> addInfo(String address, String name, String phone) {
@@ -288,7 +289,7 @@ public class PrinterCommand {
     /**
      * 打印两列
      *
-     * @param leftText 左侧文字
+     * @param leftText  左侧文字
      * @param rightText 右侧文字
      */
     public static byte[] LeftToRight(String leftText, String rightText) {
@@ -308,7 +309,7 @@ public class PrinterCommand {
     /**
      * 打印两列 加粗
      *
-     * @param left 左侧文字
+     * @param left  左侧文字
      * @param right 右侧文字
      */
     public static ArrayList<byte[]> LeftToRightBold(String left, String right) {
@@ -321,9 +322,9 @@ public class PrinterCommand {
     /**
      * 打印三列
      *
-     * @param left 左侧文字
+     * @param left   左侧文字
      * @param middle 中间文字
-     * @param right 右侧文字
+     * @param right  右侧文字
      */
     public static byte[] LeftToMiddleToRight(String left, String middle, String right) {
         StringBuilder sb = new StringBuilder();
@@ -352,9 +353,9 @@ public class PrinterCommand {
     /**
      * 打印三列 超过 8 个字换行
      *
-     * @param left 左侧文字
+     * @param left   左侧文字
      * @param middle 中间文字
-     * @param right 右侧文字
+     * @param right  右侧文字
      */
     public static byte[] LeftToMiddleToRightBr(String left, String middle, String right) {
         StringBuilder sb = new StringBuilder();
@@ -406,6 +407,6 @@ public class PrinterCommand {
      * @param fontSize 字号 0x00(最小) .... 0x77(最大)
      */
     public static byte[] fontSize(byte fontSize) {
-        return new byte[] { 0x1D, 0x21, fontSize };
+        return new byte[]{0x1D, 0x21, fontSize};
     }
 }

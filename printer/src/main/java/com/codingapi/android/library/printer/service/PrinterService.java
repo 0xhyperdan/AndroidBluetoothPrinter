@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.codingapi.android.library.printer.PrinterDeviceManager;
 import com.codingapi.android.library.printer.threads.ThreadFactoryBuilder;
 import com.codingapi.android.library.printer.threads.ThreadPool;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -18,13 +19,8 @@ import java.util.ArrayList;
  */
 
 public class PrinterService extends Service implements PrinterDeviceManager.PrintStatusListener {
-    private static final String TAG = PrinterService.class.getSimpleName();
-    private static final String BLUETOOTH_NOT_SUPPORT = "该设备不支持蓝牙";
-    private static final String PRINT_DATA_NOT_NULL = "打印数据不能为空";
-    private static final String OPEN_BLUETOOTH = "请开启设备蓝牙";
     public static final String ERROR_MESSAGE = "error_message";
     public static final String PRINT_RESET_ADDRESS = "print_reset_address";
-
     public static final String FILTER_ACTION = PrinterService.class.getName();
     // 打印机蓝牙地址
     public static final String BLUETOOTH_ADDRESS = "bluetooth_address";
@@ -32,6 +28,10 @@ public class PrinterService extends Service implements PrinterDeviceManager.Prin
     public static final String PRINT_DATA = "print_data";
     // 打印模式
     public static final String PRINT_MODEL = "print_model";
+    private static final String TAG = PrinterService.class.getSimpleName();
+    private static final String BLUETOOTH_NOT_SUPPORT = "该设备不支持蓝牙";
+    private static final String PRINT_DATA_NOT_NULL = "打印数据不能为空";
+    private static final String OPEN_BLUETOOTH = "请开启设备蓝牙";
     // 蓝牙适配器
     private BluetoothAdapter mBluetoothAdapter;
     // 线程池
@@ -45,22 +45,27 @@ public class PrinterService extends Service implements PrinterDeviceManager.Prin
     // 是否重设
     private boolean isReset;
 
-    @Nullable @Override public IBinder onBind(Intent intent) {
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
         return null;
     }
 
-    @Override public void onCreate() {
+    @Override
+    public void onCreate() {
         super.onCreate();
         mThreadFactory = new ThreadFactoryBuilder(PrinterService.class.getSimpleName());
     }
 
-    @Override public void onDestroy() {
+    @Override
+    public void onDestroy() {
         mPrintManager.release();
         ThreadPool.getInstance().stopThreadPool();
         super.onDestroy();
     }
 
-    @Override public int onStartCommand(Intent intent, int flags, int startId) {
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
         if (intent != null) {
             String address;
             if (intent.hasExtra(PRINT_RESET_ADDRESS)) {
@@ -113,7 +118,8 @@ public class PrinterService extends Service implements PrinterDeviceManager.Prin
     // 打印
     private void print() {
         final Runnable runnable = mThreadFactory.newThread(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 if (model == MODE.TEST) {
                     mPrintManager.printTest();
                 } else {
@@ -128,42 +134,50 @@ public class PrinterService extends Service implements PrinterDeviceManager.Prin
         return mPrintData == null || mPrintData.isEmpty();
     }
 
-    @Override public void connecting() {
+    @Override
+    public void connecting() {
         // 打印机正在连接
         send(STATUS.CONNECTING);
     }
 
-    @Override public void connected() {
+    @Override
+    public void connected() {
         // 打印机连接成功
         send(STATUS.CONNECTED);
     }
 
-    @Override public void disconnected() {
+    @Override
+    public void disconnected() {
         // 打印机断开连接
         send(STATUS.DISCONNECTED);
     }
 
-    @Override public void connectFail(Exception e) {
+    @Override
+    public void connectFail(Exception e) {
         // 打印机连接失败
         send(STATUS.CONNECT_FAIL, e.toString());
     }
 
-    @Override public void error(int code) {
+    @Override
+    public void error(int code) {
         // 打印机逻辑错误
         send(STATUS.ERROR, "打印机状态码：" + code);
     }
 
-    @Override public void noPaper() {
+    @Override
+    public void noPaper() {
         // 无纸张
         send(STATUS.NO_PAPER);
     }
 
-    @Override public void open() {
+    @Override
+    public void open() {
         // 开盖
         send(STATUS.OPEN);
     }
 
-    @Override public void ready() {
+    @Override
+    public void ready() {
         // 打印机准备就绪
         send(STATUS.READY);
     }
@@ -181,6 +195,10 @@ public class PrinterService extends Service implements PrinterDeviceManager.Prin
         sendBroadcast(intent);
     }
 
+    private void showMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
     public enum MODE implements Serializable {
         NORMAL, TEST
     }
@@ -194,9 +212,5 @@ public class PrinterService extends Service implements PrinterDeviceManager.Prin
         OPEN,
         NO_PAPER,
         READY
-    }
-
-    private void showMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

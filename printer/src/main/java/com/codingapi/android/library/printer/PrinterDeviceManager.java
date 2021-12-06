@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.util.Log;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -15,18 +16,19 @@ import java.util.UUID;
  */
 public class PrinterDeviceManager {
     private static final String TAG = PrinterDeviceManager.class.getSimpleName();
+    // UUID
+    private static final UUID sUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     // 单例
-    private static PrinterDeviceManager sDeviceManager;
+    private static volatile PrinterDeviceManager sDeviceManager;
     // 蓝牙 io
     private BluetoothSocket mSocket;
     // 输入流
     private InputStream mInputStream;
     // 读取流
     private OutputStream mOutputStream;
-    // UUID
-    private static final UUID sUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     // 蓝牙地址
-    private String mBluetoothAddress;
+    private final String mBluetoothAddress;
+    private PrintStatusListener mListener;
 
     private PrinterDeviceManager(String address) {
         mBluetoothAddress = address;
@@ -194,8 +196,6 @@ public class PrinterDeviceManager {
     public void addListener(PrintStatusListener listener) {
         mListener = listener;
     }
-
-    private PrintStatusListener mListener;
 
     public interface PrintStatusListener {
         void connecting();

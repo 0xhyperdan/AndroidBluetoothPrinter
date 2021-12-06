@@ -1,10 +1,11 @@
 package com.codingapi.android.test;
 
 import com.codingapi.android.library.printer.PrinterCommand;
+
 import java.util.ArrayList;
 
 public class PrinterFormat {
-    public static ArrayList<byte[]> getPrintData() {
+    public static ArrayList<byte[]> getPrintTestData() {
         ArrayList<byte[]> bytes = new ArrayList<>();
         bytes.addAll(PrinterCommand.addTitleH1("**#90吃喝玩了**"));
         bytes.addAll(PrinterCommand.addTitleH1("商家名称"));

@@ -1,47 +1,39 @@
 package com.codingapi.android.library.printer.threads;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * Created by iCong
  */
 public class ThreadPool {
 
+    /**
+     * 最大线程数
+     */
+    private final static int MAX_POOL_COUNTS = 20;
+    /**
+     * 线程存活时间
+     */
+    private final static long ALIVETIME = 200L;
+    /**
+     * 核心线程数
+     */
+    private final static int CORE_POOL_SIZE = 20;
     private static ThreadPool threadPool;
+    /**
+     * 线程池缓存队列
+     */
+    private static BlockingQueue<Runnable> mWorkQueue = new ArrayBlockingQueue<>(CORE_POOL_SIZE);
     /**
      * java线程池
      */
     private ThreadPoolExecutor threadPoolExecutor;
 
-    /**
-     * 最大线程数
-     */
-    private final static int MAX_POOL_COUNTS = 20;
-
-    /**
-     * 线程存活时间
-     */
-    private final static long ALIVETIME = 200L;
-
-    /**
-     * 核心线程数
-     */
-    private final static int CORE_POOL_SIZE = 20;
-
-    /**
-     * 线程池缓存队列
-     */
-    private static BlockingQueue<Runnable> mWorkQueue = new ArrayBlockingQueue<>(CORE_POOL_SIZE);
-
     private ThreadPool() {
         ThreadFactory threadFactory = new ThreadFactoryBuilder(ThreadPool.class.getSimpleName());
         threadPoolExecutor =
-            new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_COUNTS, ALIVETIME, TimeUnit.SECONDS,
-                mWorkQueue, threadFactory);
+                new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_COUNTS, ALIVETIME, TimeUnit.SECONDS,
+                        mWorkQueue, threadFactory);
     }
 
     public static ThreadPool getInstance() {

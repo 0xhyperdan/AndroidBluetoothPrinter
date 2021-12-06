@@ -1,16 +1,16 @@
 <resources>
-  <string name="app_name">GpPrinterKit</string>
-  <string name="str_conn_state_connecting">连接状态：连接中</string>
-  <string name="str_connecting">连接中</string>
-  <string name="str_state_query">状态查询</string>
-  <string name="str_disconnect">断开连接</string>
-  <string name="str_conn_successful">连接成功！</string>
-  <string name="disconnect">断开连接</string>
-  <string name="cut">未连接</string>
-  <string name="cutting">断开连接中…</string>
-  <string name="str_disconn">断开</string>
-  <string name="connect">连接</string>
-  <string name="connected">已连接</string>
-  <string name="bluetooth_is_not_enabled">蓝牙没有开启</string>
+    <string name="app_name">GpPrinterKit</string>
+    <string name="str_conn_state_connecting">连接状态：连接中</string>
+    <string name="str_connecting">连接中</string>
+    <string name="str_state_query">状态查询</string>
+    <string name="str_disconnect">断开连接</string>
+    <string name="str_conn_successful">连接成功！</string>
+    <string name="disconnect">断开连接</string>
+    <string name="cut">未连接</string>
+    <string name="cutting">断开连接中…</string>
+    <string name="str_disconn">断开</string>
+    <string name="connect">连接</string>
+    <string name="connected">已连接</string>
+    <string name="bluetooth_is_not_enabled">蓝牙没有开启</string>
 </resources>
 
